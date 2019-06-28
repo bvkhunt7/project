@@ -13,5 +13,5 @@ public interface MyService {
 	public List<Person> showAllEmployees();
 	public List<Person> update(int id,String name,long contact,int cid);
 	public List<Person> delete(int id,int cid);
-//    public List<Person> search(String name);
+   public List<Person> search(String name);
 }

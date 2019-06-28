@@ -61,13 +61,14 @@ public class MyServiceImpl implements MyService{
 	@Override
 	public List<Person> showAllEmployees() {
 		EntityManager entityManager = em.get();
-		List<Person> personList = new ArrayList();
+		List<Person> personList = new ArrayList<Person>();
 
 		
-		Query query = entityManager.createQuery("from Person");
-		personList = query.getResultList();
+		//Query query 
+		personList= entityManager.createQuery("from Person").getResultList();
+		//personList = query.getResultList();
 
-		entityManager.close();
+		//entityManager.close();
 		return personList;
 	}
 ////
@@ -121,16 +122,16 @@ public class MyServiceImpl implements MyService{
 		return personList;
 	}
 	
-//	@Transactional
-//	@Override
-//	public List<Person> search(String name)
-//	{
-//		EntityManager entityManager = em.get();
-//		List<Person> personList = entityManager.createQuery("from Person where name ='" + name + "'").getResultList();
-//		
-//		
-//		return personList;
-//	}
+	@Transactional
+	@Override
+	public List<Person> search(String name)
+	{
+		EntityManager entityManager = em.get();
+		List<Person> personList = entityManager.createQuery("from Person where name ='" + name + "'").getResultList();
+		
+		
+		return personList;
+	}
 //	@Transactional
 //	@Override
 //	public void doStuff(String name, String brand) {

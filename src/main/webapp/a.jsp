@@ -6,51 +6,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
-<head>
-</head>
 <body>
+<form method="post" >
 
-	<table>
-	
-
-		<%
-			List<Person> studentList = (List<Person>) request.getAttribute("perlist");
-			for (Person item : studentList) {
-				List<Contact> listofContact1 = item.getLaps();
-				for (Contact items:listofContact1){
-		%>
-		<form method="post">
-		<table border="2px">
-			<tr>	<td><input type="text" name="id" value="<%=item.getId()%>">
-				</td>
-				<td><input type="text" name="name"
-					value="<%=item.getName()%>"></td>
-					
-					
-					<td><input type="text" name="contact" value="<%=items.getCno()%>">
-				</td>
-				<td><input type="text" name="cid" value="<%=items.getCid()%>">
-				</td>
- 			    
- 			    <td><button name="button" value="OK" type="submit"onClick = "form.action='../delete.jsp'" >Delete</button> 
- 			     <td><button name="ubutton" value="update" type="submit" onClick = "form.action='../update.jsp'">Update</button> 
-
-			</tr>
-			</table>
-			   	</form>  
-			<%
-				}}
-			%>
-
-	
+				<td><input type="text" name="id" value="<%=request.getParameter("id")%>"></td>
 		
-		
-	</table>
-<!-- 	<form action="nbk" > -->
-	
-<!-- 	<input type = "text"   name="id" >	 -->
-<!-- 	< -->
-<!-- 	</form>  -->
+		<td><input type="text" name="name" value="<%=request.getParameter("name")%>"></td>
+			
+			<td><input type="text" name="contact" value="<%=request.getParameter("contact")%>"></td>
+			
+			<td><input type="text" name="cid" value="<%=request.getParameter("cid")%>"></td>
 
-</body>
-</html>
+<!-- 		<td><button name="dbtn" value="delete" type="submit">Delete</button> -->
+		
+		 <td><button name="ubutton" value="update" type="submit" onClick ="form.action='<%=request.getContextPath() %>/edit'"> Update</button> 
+
+		</tr>
+			   	</form>
+			   	
+			   	</body>
+			   	</html>    
